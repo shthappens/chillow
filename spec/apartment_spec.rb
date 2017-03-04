@@ -12,7 +12,6 @@ RSpec.describe Apartment do
       lease_start_date: "September 1",
       lease_end_date: "May 1",
       total_capacity: "4",
-      # used_capacity: "2"
     })
   }
 
@@ -50,13 +49,13 @@ RSpec.describe Apartment do
 
   context "checking to see if the apartment is full" do
     it "is full if total rooms equals occupied rooms" do
-      expect(apartment.apartment_full?).to eq(false)
+      expect(apartment.full?).to eq(false)
     end
   end
 
   context "adding roommates" do
     it "adds a roommate if the apartment is not full" do
-      expect(apartment.add_roommate("occupant")).to eq(1)
+      expect(apartment.add("occupant")).to eq(1)
     end
   end
 

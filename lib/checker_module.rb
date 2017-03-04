@@ -1,44 +1,31 @@
 module Checker
 
-  def truck_full?
-    @boxes.size >= box_capacity.to_i
+  def full?
+    @capacity.size >= total_capacity.to_i
   end
 
-  def apartment_full?
-    @occupants.size >= total_capacity.to_i
-  end
-
-  def add_box(box)
-    unless truck_full?
-      @boxes << box
+  def add(item)
+    unless full?
+      @capacity << item
     else
-      raise "This truck is currently at full capacity."
+      raise "This is currently at full capacity."
     end
-    @boxes.length
-  end
-
-  def add_roommate(occupant)
-    unless apartment_full?
-      @occupants << occupant
-    else
-      raise "This apartment is currently at full capacity."
-    end
-    @occupants.length
+    @capacity.length
   end
 
   def remove_box
-    @boxes.pop
+    @capacity.pop
   end
 
   def remove_roommate
     if move == "Yes"
-      @occupants.pop
+      @capacity.pop
     end
-    @occupants.length
+    @capacity.length
   end
 
   def unload(contents)
-    @boxes.clear
+    @capacity.clear
   end
 
 end
