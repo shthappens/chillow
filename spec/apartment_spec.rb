@@ -6,12 +6,13 @@ RSpec.describe Apartment do
     {
       address: "1 Yawkey Way",
       city: "Boston",
+      state: "MA",
       zip_code: "02110",
       rent: "$2500",
       lease_start_date: "September 1",
       lease_end_date: "May 1",
       total_capacity: "4",
-      used_capacity: "2"
+      # used_capacity: "2"
     })
   }
 
@@ -43,26 +44,26 @@ RSpec.describe Apartment do
     expect(apartment.total_capacity).to eq("4")
   end
 
-  it "initializes with the # of available rooms" do
-    expect(apartment.used_capacity).to eq("2")
-  end
+  # it "initializes with the # of available rooms" do
+  #   expect(apartment.used_capacity).to eq("2")
+  # end
 
   context "checking to see if the apartment is full" do
     it "is full if total rooms equals occupied rooms" do
-      expect(apartment.full?).to eq(false)
+      expect(apartment.apartment_full?).to eq(false)
     end
   end
 
-  # context "adding roommates" do
-  #   it "adds a roommate until the apartment is full" do
-  #     expect(apartment.add_roommate).to eq(4)
-  #   end
-  # end
+  context "adding roommates" do
+    it "adds a roommate if the apartment is not full" do
+      expect(apartment.add_roommate("occupant")).to eq(1)
+    end
+  end
 
-  # context "removing roommates" do
-  #   it "removes a roommate if the apartment is full" do
-  #     expect(apartment.remove_roommate).to eq(3)
-  #   end
-  # end
+  context "removing roommates" do
+    it "removes a roommate if the roommate is moving" do
+      expect(apartment.remove_roommate).to eq(0)
+    end
+  end
 
 end
