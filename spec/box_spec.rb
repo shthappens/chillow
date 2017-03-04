@@ -2,14 +2,10 @@ require 'spec_helper'
 
 RSpec.describe Box do
 
-  let(:box) { Box.new(
-    {
-      box_name: "Seth Thompson",
-    })
-  }
+  let(:box) { Occupant.new("Seth", "Tee", "Seth Tee", "Yes") }
 
   it "initializes with the owner's name on the box" do
-    expect(box.box_name).to eq("Seth Thompson")
+    expect(box.full_name).to eq("Seth Tee")
   end
 
 end

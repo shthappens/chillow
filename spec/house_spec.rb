@@ -12,6 +12,10 @@ RSpec.describe House do
     })
   }
 
+  it "should inherit from Dwelling class" do
+    expect(House).to be < Dwelling
+  end
+
   it "initializes with an address" do
     expect(house.address).to eq("1 Yawkey Way")
   end

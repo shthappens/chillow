@@ -14,6 +14,14 @@ RSpec.describe Apartment do
       total_capacity: "4",
     })
   }
+  let(:sam) { Occupant.new("Sam", "Tee", "Sam Tee", "No") }
+  let(:gabrielle) { Occupant.new("Gabrielle", "Tee", "Gabrielle Tee", "No") }
+  let(:kristen) { Occupant.new("Kristen", "Tee", "Kristen Tee", "No") }
+  let(:seth) { Occupant.new("Seth", "Tee", "Seth Tee", "No") }
+
+  it "should inherit from Dwelling class" do
+    expect(Apartment).to be < Dwelling
+  end
 
   it "initializes with an address" do
     expect(apartment.address).to eq("1 Yawkey Way")
@@ -43,13 +51,17 @@ RSpec.describe Apartment do
     expect(apartment.total_capacity).to eq("4")
   end
 
-  # it "initializes with the # of available rooms" do
-  #   expect(apartment.used_capacity).to eq("2")
-  # end
-
   context "checking to see if the apartment is full" do
-    it "is full if total rooms equals occupied rooms" do
+    it "is not fully occupied" do
       expect(apartment.full?).to eq(false)
+    end
+
+    it "is fully occupied" do
+      apartment.add(sam)
+      apartment.add(gabrielle)
+      apartment.add(kristen)
+      apartment.add(seth)
+      expect(apartment.full?).to eq(true)
     end
   end
 
@@ -61,7 +73,7 @@ RSpec.describe Apartment do
 
   context "removing roommates" do
     it "removes a roommate if the roommate is moving" do
-      expect(apartment.remove_roommate).to eq(0)
+      expect(apartment.remove_item).to eq(nil)
     end
   end
 

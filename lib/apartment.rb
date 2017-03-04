@@ -6,8 +6,7 @@ class Apartment < Dwelling
 
   include Checker
 
-  attr_reader :address, :city, :rent, :zip_code, :lease_start_date
-  attr_reader :lease_end_date, :total_capacity, :move
+  attr_reader :rent, :lease_start_date, :lease_end_date, :total_capacity, :move
 
   def initialize(apartment_info)
     super { |hash, key| hash[key] = [] }

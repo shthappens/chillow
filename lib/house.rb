@@ -2,7 +2,7 @@ require_relative 'dwelling'
 
 class House < Dwelling
 
-  attr_reader :address, :city, :state, :zip_code, :asking_price
+  attr_reader :asking_price
 
   def initialize(house_info)
     super { |hash, key| hash[key] = [] }

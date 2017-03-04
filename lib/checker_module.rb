@@ -1,7 +1,11 @@
 module Checker
 
   def full?
-    @capacity.size >= total_capacity.to_i
+    if @capacity.size >= total_capacity.to_i
+      true
+    else
+      false
+    end
   end
 
   def add(item)
@@ -13,15 +17,8 @@ module Checker
     @capacity.length
   end
 
-  def remove_box
+  def remove_item
     @capacity.pop
-  end
-
-  def remove_roommate
-    if move == "Yes"
-      @capacity.pop
-    end
-    @capacity.length
   end
 
   def unload(contents)
